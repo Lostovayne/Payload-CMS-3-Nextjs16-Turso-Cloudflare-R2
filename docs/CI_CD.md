@@ -493,6 +493,30 @@ Aumenta memoria en el workflow:
     version: 10 # Debe coincidir con tu versión local
 ```
 
+### ❌ Múltiples workflows ejecutándose en paralelo
+
+**Problema:** Al hacer varios push rápidos, se ejecutan múltiples CI simultáneamente.
+
+**Solución:** Ya está configurado con `concurrency` para cancelar workflows anteriores:
+
+```yaml
+# En cada workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+```
+
+**Qué hace:**
+
+- `group`: Agrupa workflows por nombre + branch/PR
+- `cancel-in-progress: true`: Cancela el anterior si hay uno nuevo
+
+**Resultado:**
+
+- Solo el workflow MÁS RECIENTE se ejecuta
+- Los anteriores se cancelan automáticamente
+- Ahorra recursos de GitHub Actions
+
 ---
 
 ## 📊 Badges para README
@@ -523,6 +547,80 @@ Agrega badges a tu README para mostrar el estado:
 - ❌ No uses `pull_request` + `write` permissions (usa `pull_request_target`)
 - ❌ No hagas auto-merge de major updates sin revisar
 - ❌ No ejecutes workflows en todas las ramas (limita a main/develop)
+
+### ❌ Workflow no se cancela cuando hago nuevo push
+
+**Verifica que el workflow tenga:**
+
+```yaml
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+```
+
+Si usas PRs desde forks, cambia a:
+
+```yaml
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+```
+
+---
+
+## ⚡ Concurrencia de Workflows
+
+### Configuración de Concurrencia
+
+Todos los workflows están configurados para cancelar ejecuciones anteriores:
+
+```yaml
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+```
+
+**Beneficios:**
+
+- ✅ Solo se ejecuta el workflow más reciente
+- ✅ Cancela automáticamente los anteriores
+- ✅ Ahorra minutos de GitHub Actions
+- ✅ Resultados más rápidos
+
+**Grupos de concurrencia:**
+
+| Workflow   | Group Key                | Comportamiento |
+| ---------- | ------------------------ | -------------- |
+| CI/CD      | `ci-main` o `ci-develop` | Por branch     |
+| Format     | `format-main`            | Por branch     |
+| Docker     | `docker-publish-main`    | Por branch     |
+| Dependabot | `automerge-PR-123`       | Por PR number  |
+
+**Ejemplo:**
+
+```
+Push 1 → CI empieza (commit abc123)
+Push 2 → CI empieza (commit def456), cancela anterior ❌
+Push 3 → CI empieza (commit ghi789), cancela anterior ❌
+         Solo el último (ghi789) se completa ✅
+```
+
+### Personalizar Concurrencia
+
+```yaml
+# No cancelar (ejecutar todos)
+# Elimina o comenta el bloque concurrency
+
+# Cancelar solo en la misma PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+# Cancelar por usuario
+concurrency:
+  group: ${{ github.workflow }}-${{ github.actor }}
+  cancel-in-progress: true
+```
 
 ---
 

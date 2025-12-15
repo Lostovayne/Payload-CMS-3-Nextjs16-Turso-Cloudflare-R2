@@ -6,11 +6,13 @@
 name: Docker Build & Publish
 
 on:
-  # Trigger en push a main/develop
+  # Trigger en push a main/develop y tags
   push:
     branches:
       - main
       - develop
+    tags:
+      - 'v*.*.*'
     # Solo si cambian archivos relevantes
     paths:
       - 'src/**'
@@ -18,11 +20,6 @@ on:
       - 'package.json'
       - 'pnpm-lock.yaml'
       - '.github/workflows/docker-publish.yml'
-
-  # Trigger en nuevos tags (releases)
-  push:
-    tags:
-      - 'v*.*.*'
 
   # Trigger en PRs para testing (no publica)
   pull_request:
@@ -41,6 +38,11 @@ on:
         options:
           - 'true'
           - 'false'
+
+# Cancelar workflows anteriores si hay un nuevo push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 # Permisos necesarios para GHCR
 permissions:

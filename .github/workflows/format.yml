@@ -13,6 +13,11 @@ on:
   # Permitir ejecución manual
   workflow_dispatch:
 
+# Cancelar workflows anteriores si hay un nuevo push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 # Permisos necesarios para hacer commit
 permissions:
   contents: write

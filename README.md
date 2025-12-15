@@ -20,6 +20,7 @@ Plantilla completa de Payload CMS 3.0 con Next.js 15, base de datos Turso (SQLit
 - **[📜 COMMANDS.md](./docs/COMMANDS.md)** - Referencia completa de comandos
 - **[🏗️ ARCHITECTURE.md](./docs/ARCHITECTURE.md)** - Arquitectura técnica con diagramas
 - **[🚀 CI_CD.md](./docs/CI_CD.md)** - GitHub Actions, Dependabot y automatizaciones
+- **[🐳 DOCKER.md](./docs/DOCKER.md)** - Docker, deployment y contenedores
 - **[🤝 CONTRIBUTING.md](./docs/CONTRIBUTING.md)** - Guía para contribuir al proyecto
 
 ## 📋 Tabla de Contenidos
@@ -59,10 +60,11 @@ Plantilla completa de Payload CMS 3.0 con Next.js 15, base de datos Turso (SQLit
 - ✅ **📦 Storage en la Nube** - Archivos en Cloudflare R2 (compatible S3)
 - ✅ **🗄️ Base de Datos Serverless** - Turso con edge locations globales
 - ✅ **🧪 Testing Completo** - Vitest (integración) + Playwright (E2E)
-- ✅ **🐳 Docker Ready** - Despliega en cualquier lugar
+- ✅ **🐳 Docker Ready** - Multi-stage optimizado + GHCR
 - ✅ **📚 Documentación Completa** - Guías paso a paso en carpeta `/docs`
 - ✅ **🔧 Type-Safe** - TypeScript en todo el stack
 - ✅ **🤖 CI/CD Integrado** - GitHub Actions + Dependabot + Auto-format
+- ✅ **📦 Auto-Deploy** - Imagen Docker publicada automáticamente
 
 ## 📦 Requisitos Previos
 
@@ -350,7 +352,9 @@ mi-proyecto-2025/
 ├── 📂 src/
 │   ├── 📂 app/                    # Next.js App Router
 │   │   ├── (payload)/            # Rutas de Payload CMS
-│   │   └── api/                  # API Routes personalizadas
+│   │   ├── api/                  # API Routes personalizadas
+│   │   │   └── health/           # Health check endpoint
+│   │   └── ...
 │   ├── 📂 collections/            # 🎯 Colecciones de Payload CMS
 │   │   ├── Users.ts              # 👤 Colección de usuarios
 │   │   └── Media.ts              # 🖼️ Colección de archivos
@@ -364,11 +368,23 @@ mi-proyecto-2025/
 │   ├── QUICKSTART.md             # ⚡ Guía rápida (5 min)
 │   ├── DEVELOPMENT.md            # 🛠️ Guía de desarrollo
 │   ├── COMMANDS.md               # 📜 Referencia de comandos
+│   ├── ARCHITECTURE.md           # 🏗️ Arquitectura técnica
+│   ├── CI_CD.md                  # 🚀 GitHub Actions y CI/CD
+│   ├── DOCKER.md                 # 🐳 Docker y deployment
+│   ├── GITHUB_LABELS.md          # 🏷️ Configuración de labels
 │   └── CONTRIBUTING.md           # 🤝 Guía para contribuir
 │
 ├── 🧪 tests/                      # Tests
 │   ├── integration/              # Tests de integración (Vitest)
 │   └── e2e/                      # Tests end-to-end (Playwright)
+│
+├── 🐳 .github/                    # GitHub Actions y automatizaciones
+│   ├── workflows/                # Workflows de CI/CD
+│   │   ├── ci.yml               # CI/CD pipeline
+│   │   ├── format.yml           # Auto-format con Prettier
+│   │   ├── docker-publish.yml   # Build y push a GHCR
+│   │   └── dependabot-automerge.yml
+│   └── dependabot.yml           # Configuración de Dependabot
 │
 ├── 🔒 .env                        # Variables de entorno (gitignored)
 ├── 📋 .env.example                # Plantilla de variables
@@ -376,8 +392,9 @@ mi-proyecto-2025/
 ├── ⚙️ next.config.mjs             # Configuración de Next.js
 ├── ⚙️ drizzle.conf.ts             # Configuración de Drizzle ORM
 ├── ⚙️ tsconfig.json               # Configuración de TypeScript
-├── 🐳 Dockerfile                  # Configuración de Docker
+├── 🐳 Dockerfile                  # Multi-stage optimizado
 ├── 🐳 docker-compose.yml          # Orquestación de Docker
+├── 🐳 .dockerignore               # Archivos a excluir del build
 ├── 📝 CHANGELOG.md                # Historial de cambios
 └── 📖 README.md                   # Este archivo
 ```
@@ -513,6 +530,8 @@ pnpm dev
 - **[📜 Referencia de Comandos](./docs/COMMANDS.md)** - Todos los comandos explicados en detalle
 - **[🏗️ Arquitectura Técnica](./docs/ARCHITECTURE.md)** - Diagramas, flujos de datos y decisiones de diseño
 - **[🚀 CI/CD y Automatizaciones](./docs/CI_CD.md)** - GitHub Actions, Dependabot y workflows
+- **[🐳 Docker y Deployment](./docs/DOCKER.md)** - Contenedores, build multi-stage y despliegue
+- **[🏷️ GitHub Labels](./docs/GITHUB_LABELS.md)** - Configurar labels para Dependabot
 - **[🤝 Guía de Contribución](./docs/CONTRIBUTING.md)** - Cómo contribuir al proyecto
 
 ### Recursos Externos
@@ -534,24 +553,31 @@ pnpm dev
    - [Control de acceso y permisos](./docs/DEVELOPMENT.md#control-de-acceso)
    - [Hooks y validación](./docs/DEVELOPMENT.md#hooks-y-validación)
 
-3. **Despliegue:**
-   - [Desplegar en Vercel](#vercel-recomendado)
-   - Configurar variables de entorno en producción
+3. **Deployment:**
+   - [Docker con multi-stage](./docs/DOCKER.md) - Railway, Render, VPS
+   - [Desplegar en Vercel](#vercel-recomendado) - Serverless
+   - [GitHub Container Registry](./docs/DOCKER.md#usar-imagen-de-github) - Imagen pre-built
+
+4. **Automatización:**
+   - [Configurar GitHub Actions](./docs/CI_CD.md)
+   - [Crear labels para Dependabot](./docs/GITHUB_LABELS.md)
+   - [Auto-merge de dependencias](./docs/CI_CD.md#auto-merge-de-dependabot)
 
 ## 🎯 Casos de Uso
 
 Esta plantilla es perfecta para:
 
-| Caso de Uso                    | Características Ideales                                |
-| ------------------------------ | ------------------------------------------------------ |
-| 🌐 **Sitios web corporativos** | CMS headless, multi-idioma, gestión de equipo          |
-| 📝 **Blogs y publicaciones**   | Editor Lexical rico, categorías, autores, SEO          |
-| 🛍️ **E-commerce básico**       | Productos, categorías, media, inventario               |
-| 📱 **Aplicaciones móviles**    | API REST/GraphQL, autenticación, media storage         |
-| 🎨 **Portafolios**             | Galería de medios en R2, proyectos, testimonios        |
-| 📚 **Documentación**           | Contenido estructurado, búsqueda, versionado           |
-| 🎓 **Plataformas educativas**  | Cursos, lecciones, usuarios, progreso                  |
-| 📰 **Sistemas de noticias**    | Artículos, categorías, autores, publicación programada |
+| Caso de Uso                    | Características Ideales                                 |
+| ------------------------------ | ------------------------------------------------------- |
+| 🌐 **Sitios web corporativos** | CMS headless, multi-idioma, gestión de equipo           |
+| 📝 **Blogs y publicaciones**   | Editor Lexical rico, categorías, autores, SEO           |
+| 🛍️ **E-commerce básico**       | Productos, categorías, media, inventario                |
+| 📱 **Aplicaciones móviles**    | API REST/GraphQL, autenticación, media storage          |
+| 🎨 **Portafolios**             | Galería de medios en R2, proyectos, testimonios         |
+| 📚 **Documentación**           | Contenido estructurado, búsqueda, versionado            |
+| 🎓 **Plataformas educativas**  | Cursos, lecciones, usuarios, progreso                   |
+| 📰 **Sistemas de noticias**    | Artículos, categorías, autores, publicación programada  |
+| 🚀 **SaaS Startups**           | Deploy rápido con Docker, auto-scaling, CI/CD integrado |
 
 ### 💼 Ventajas Empresariales
 
@@ -585,7 +611,7 @@ Creado con ❤️ usando Payload CMS, Next.js, Turso y Cloudflare R2
 
 **¿Necesitas ayuda?**
 
-- 📖 Lee la documentación: [QUICKSTART](./docs/QUICKSTART.md) | [DEVELOPMENT](./docs/DEVELOPMENT.md) | [COMMANDS](./docs/COMMANDS.md) | [ARCHITECTURE](./docs/ARCHITECTURE.md) | [CI/CD](./docs/CI_CD.md) | [CONTRIBUTING](./docs/CONTRIBUTING.md)
+- 📖 Lee la documentación: [QUICKSTART](./docs/QUICKSTART.md) | [DEVELOPMENT](./docs/DEVELOPMENT.md) | [COMMANDS](./docs/COMMANDS.md) | [ARCHITECTURE](./docs/ARCHITECTURE.md) | [CI/CD](./docs/CI_CD.md) | [DOCKER](./docs/DOCKER.md) | [CONTRIBUTING](./docs/CONTRIBUTING.md)
 - 🐛 Reporta bugs: Abre un issue en el repositorio
 - 💬 Consulta la [documentación oficial de Payload](https://payloadcms.com/docs)
 
