@@ -8,9 +8,7 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  experimental: {
-    serverComponentsExternalPackages: ['@libsql/client', 'libsql', 'better-sqlite3'],
-  },
+  serverExternalPackages: ['@libsql/client', 'libsql', 'better-sqlite3'],
   webpack: (webpackConfig, { isServer }) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
