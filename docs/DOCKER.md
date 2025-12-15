@@ -166,6 +166,8 @@ docker image prune -a
 - 🔧 **PRs**: Solo construye para validar (NO publica)
 - ⚠️ **develop**: NO ejecuta el workflow de Docker
 
+**⚠️ Nota importante:** Los nombres de imágenes en Docker/GHCR deben estar en **minúsculas**. El workflow convierte automáticamente `github.repository` a minúsculas.
+
 Cuando haces push a `main`, GitHub Actions automáticamente:
 
 1. Construye la imagen Docker
@@ -173,7 +175,7 @@ Cuando haces push a `main`, GitHub Actions automáticamente:
 3. Ejecuta escaneo de seguridad con Trivy
 
 ```bash
-# Pull de la imagen publicada
+# Pull de la imagen publicada (el nombre debe estar en minúsculas)
 docker pull ghcr.io/tu-usuario/tu-repo:latest
 
 # Pull de una versión específica
@@ -201,7 +203,7 @@ docker login ghcr.io -u tu-usuario
 
 ### Tags Disponibles
 
-GitHub Actions genera automáticamente estos tags:
+GitHub Actions genera automáticamente estos tags (en minúsculas):
 
 | Tag           | Descripción              | Ejemplo                         | Branch   |
 | ------------- | ------------------------ | ------------------------------- | -------- |
@@ -211,7 +213,11 @@ GitHub Actions genera automáticamente estos tags:
 | `v1.2`        | Major.minor              | `ghcr.io/user/repo:v1.2`        | **main** |
 | `main-abc123` | SHA commit               | `ghcr.io/user/repo:main-abc123` | **main** |
 
-**Nota:** Solo las imágenes de `main` (producción) se publican a GHCR. Otras ramas solo construyen la imagen para validación.
+**Notas importantes:**
+
+- Solo las imágenes de `main` (producción) se publican a GHCR
+- Otras ramas solo construyen la imagen para validación
+- Los nombres de imagen se convierten automáticamente a minúsculas (requisito de Docker)
 
 ---
 

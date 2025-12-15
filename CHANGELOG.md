@@ -15,6 +15,7 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 - **Archivo generado en lint** - Excluido `importMap.js` de ESLint
 - **Cache path validation error** - Reemplazado `cache: 'pnpm'` con configuración explícita de caché en workflows
 - **Docker build failing on missing public directory** - Agregado `mkdir -p public` en Dockerfile para crear directorio si no existe
+- **Docker image naming with uppercase characters** - Agregada conversión a minúsculas en workflow (requisito de Docker registry)
 
 ### 🚀 Cambiado
 
