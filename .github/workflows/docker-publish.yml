@@ -106,13 +106,16 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ steps.image.outputs.name }}
           tags: |
-            # Tags por tipo de evento
+            # Branch name (ej: main)
             type=ref,event=branch
+            # PR number (ej: pr-123)
             type=ref,event=pr
+            # Semantic version tags (solo para tags v*.*.*)
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=sha,prefix={{branch}}-
+            # SHA corto solo para main
+            type=sha,prefix=main-,enable={{is_default_branch}}
             # Latest solo para main
             type=raw,value=latest,enable={{is_default_branch}}
 
