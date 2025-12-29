@@ -1,6 +1,7 @@
 # ===================================
-# Docker Build & Publish to GHCR
-# GitHub Container Registry
+# 🐳 Docker: Build & Push to GHCR
+# Construye imagen Docker y la publica
+# en GitHub Container Registry
 #
 # POLÍTICA DE PUBLICACIÓN:
 # - main: Publica imagen a GHCR (producción)
@@ -8,7 +9,7 @@
 # - develop: NO ejecuta este workflow
 # ===================================
 
-name: Docker Build & Publish
+name: 🐳 Docker Publish
 
 on:
   # Trigger SOLO en push a main (producción) y tags
@@ -23,7 +24,7 @@ on:
       - 'Dockerfile'
       - 'package.json'
       - 'pnpm-lock.yaml'
-      - 'next.config.ts'
+      - 'next.config.mjs'
       - '.dockerignore'
       - '.github/workflows/docker-publish.yml'
 
@@ -58,8 +59,9 @@ permissions:
 # Variables de entorno globales
 env:
   REGISTRY: ghcr.io
-  # Convertir a minúsculas (Docker registry requirement)
-  IMAGE_NAME: ${{ github.repository }}
+  # Nombre de imagen personalizado (sin caracteres problemáticos como ".-")
+  # El nombre del repo contiene ".-" que Docker no acepta
+  IMAGE_NAME: ${{ github.repository_owner }}/payload-nextjs-turso-r2
 
 jobs:
   # ===================================

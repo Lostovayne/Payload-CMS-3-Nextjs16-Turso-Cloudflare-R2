@@ -1,5 +1,6 @@
-# CI/CD Pipeline - Tests, Linting y Build
-name: CI/CD
+# 🔄 CI Pipeline - Lint, Type Check, Build & Security
+# Valida código en cada push y PR
+name: 🔄 CI Pipeline
 
 on:
   push:

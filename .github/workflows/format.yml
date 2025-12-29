@@ -1,5 +1,6 @@
-# Auto-format código con Prettier y commit automático
-name: Auto Format Code
+# 🎨 Auto-format código con Prettier y ESLint
+# Se ejecuta en PRs para formatear y arreglar errores automáticamente
+name: 🎨 Auto Format & Lint
 
 on:
   push:
@@ -24,7 +25,7 @@ permissions:
 
 jobs:
   format:
-    name: Format Code with Prettier
+    name: Format & Lint Fix Code
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -85,6 +86,13 @@ jobs:
           pnpm exec prettier --write .
           echo "✅ Formatting completed"
 
+      - name: Fix lint errors
+        if: steps.check.outputs.needs_format == 'true'
+        run: |
+          echo "🔧 Fixing lint errors with ESLint..."
+          pnpm run lint:fix || true
+          echo "✅ Lint fix completed"
+
       - name: Check for changes
         if: steps.check.outputs.needs_format == 'true'
         id: git-check
@@ -100,9 +108,10 @@ jobs:
           git add .
 
           # Commit con mensaje descriptivo
-          git commit -m "style: auto-format code with Prettier
+          git commit -m "style: auto-format and lint fix
 
-          - Formatted by GitHub Actions
+          - Formatted by Prettier
+          - Lint fixed by ESLint
           - Triggered by: ${{ github.event_name }}
           - Ref: ${{ github.ref }}
 
