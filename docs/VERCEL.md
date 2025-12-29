@@ -65,6 +65,18 @@ Click en **"Environment Variables"** y agrega:
 | `NEXT_PUBLIC_SERVER_URL` | `https://tu-proyecto.vercel.app`                | Production                       |
 | `NEXT_PUBLIC_SERVER_URL` | `https://[deployment-url]`                      | Preview                          |
 | `LIBSQL_CLIENT`          | `web`                                           | Production, Preview, Development |
+| Variable                 | Valor                                           | Entorno                          |
+| ------------------------ | ----------------------------------------------- | -------------------------------- |
+| `PAYLOAD_SECRET`         | [Generar](#generar-payload_secret)              | Production, Preview, Development |
+| `TURSO_DATABASE_URL`     | `libsql://tu-db.turso.io`                       | Production, Preview, Development |
+| `TURSO_AUTH_TOKEN`       | Tu token de Turso                               | Production, Preview, Development |
+| `R2_BUCKET_NAME`         | Nombre de tu bucket R2                          | Production, Preview, Development |
+| `R2_ACCESS_KEY_ID`       | Access Key ID de R2                             | Production, Preview, Development |
+| `R2_SECRET_ACCESS_KEY`   | Secret Access Key de R2                         | Production, Preview, Development |
+| `R2_ENDPOINT`            | `https://[account-id].r2.cloudflarestorage.com` | Production, Preview, Development |
+| `NEXT_PUBLIC_SERVER_URL` | `https://tu-proyecto.vercel.app`                | Production                       |
+| `NEXT_PUBLIC_SERVER_URL` | `https://[deployment-url]`                      | Preview                          |
+| `LIBSQL_CLIENT`          | `web`                                           | Production, Preview, Development |
 
 ### 4. Deploy
 
