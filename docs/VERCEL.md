@@ -310,7 +310,3 @@ Vercel usa Node.js 20 por defecto. Esto ya está configurado en `package.json`:
   }
 }
 ```
-
-```
-
-```
