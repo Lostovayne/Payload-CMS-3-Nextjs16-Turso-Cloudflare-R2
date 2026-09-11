@@ -28,6 +28,7 @@ pnpm install
 ```
 
 > **Prefer cloning?** Run these commands instead:
+>
 > ```bash
 > git clone https://github.com/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2.git
 > cd Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2
@@ -52,15 +53,15 @@ Open `http://localhost:3000/admin` — create your admin user on first visit.
 
 ### Environment Variables
 
-| Variable | Description | How to get |
-|---|---|---|
-| `PAYLOAD_SECRET` | Encryption key (min 32 chars) | `openssl rand -base64 32` |
-| `TURSO_DATABASE_URL` | Turso database URL | `turso db show <db> --url` |
-| `TURSO_AUTH_TOKEN` | Turso auth token | `turso db tokens create <db>` |
-| `R2_BUCKET_NAME` | Cloudflare R2 bucket name | Cloudflare Dashboard > R2 |
-| `R2_ACCESS_KEY_ID` | R2 API access key | Manage R2 API Tokens |
-| `R2_SECRET_ACCESS_KEY` | R2 API secret key | Shown once on creation |
-| `R2_ENDPOINT` | R2 endpoint URL | `https://<account-id>.r2.cloudflarestorage.com` |
+| Variable               | Description                   | How to get                                      |
+| ---------------------- | ----------------------------- | ----------------------------------------------- |
+| `PAYLOAD_SECRET`       | Encryption key (min 32 chars) | `openssl rand -base64 32`                       |
+| `TURSO_DATABASE_URL`   | Turso database URL            | `turso db show <db> --url`                      |
+| `TURSO_AUTH_TOKEN`     | Turso auth token              | `turso db tokens create <db>`                   |
+| `R2_BUCKET_NAME`       | Cloudflare R2 bucket name     | Cloudflare Dashboard > R2                       |
+| `R2_ACCESS_KEY_ID`     | R2 API access key             | Manage R2 API Tokens                            |
+| `R2_SECRET_ACCESS_KEY` | R2 API secret key             | Shown once on creation                          |
+| `R2_ENDPOINT`          | R2 endpoint URL               | `https://<account-id>.r2.cloudflarestorage.com` |
 
 See [docs/QUICKSTART.md](./docs/QUICKSTART.md) for step-by-step setup with Turso CLI and Cloudflare Dashboard.
 
@@ -84,15 +85,15 @@ See [docs/QUICKSTART.md](./docs/QUICKSTART.md) for step-by-step setup with Turso
 
 ## 🛠 Tech Stack
 
-| Technology | Version | Purpose |
-|---|---|---|
-| Payload CMS | 3.80.0 | Headless CMS |
-| Next.js | 16.2 | React framework |
-| React | 19.2.3 | UI library |
-| TypeScript | 5.9.3 | Type safety |
-| Turso / libSQL | 0.15.15 | Edge database |
-| Cloudflare R2 | — | File storage |
-| Drizzle Kit | 0.31.10 | Database migrations |
+| Technology     | Version | Purpose             |
+| -------------- | ------- | ------------------- |
+| Payload CMS    | 3.80.0  | Headless CMS        |
+| Next.js        | 16.2    | React framework     |
+| React          | 19.2.3  | UI library          |
+| TypeScript     | 5.9.3   | Type safety         |
+| Turso / libSQL | 0.15.15 | Edge database       |
+| Cloudflare R2  | —       | File storage        |
+| Drizzle Kit    | 0.31.10 | Database migrations |
 
 ---
 
@@ -128,10 +129,10 @@ src/
 
 ## 🚀 Deployment
 
-| Platform | Guide |
-|---|---|
-| **Vercel** (recommended) | [docs/VERCEL.md](./docs/VERCEL.md) |
-| **Docker** | `docker-compose up -d` |
+| Platform                      | Guide                              |
+| ----------------------------- | ---------------------------------- |
+| **Vercel** (recommended)      | [docs/VERCEL.md](./docs/VERCEL.md) |
+| **Docker**                    | `docker-compose up -d`             |
 | **Railway / Render / Fly.io** | [docs/DOCKER.md](./docs/DOCKER.md) |
 
 See [docs/DOCKER.md](./docs/DOCKER.md) for detailed deployment guides.
@@ -140,13 +141,13 @@ See [docs/DOCKER.md](./docs/DOCKER.md) for detailed deployment guides.
 
 ## 📚 Documentation
 
-| Guide | Description |
-|---|---|
-| [QUICKSTART.md](./docs/QUICKSTART.md) | Get running in 5 minutes |
-| [DEVELOPMENT.md](./docs/DEVELOPMENT.md) | Create collections, fields, customize |
-| [ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Technical architecture |
-| [COMMANDS.md](./docs/COMMANDS.md) | Complete command reference |
-| [CI_CD.md](./docs/CI_CD.md) | GitHub Actions and automation |
+| Guide                                     | Description                           |
+| ----------------------------------------- | ------------------------------------- |
+| [QUICKSTART.md](./docs/QUICKSTART.md)     | Get running in 5 minutes              |
+| [DEVELOPMENT.md](./docs/DEVELOPMENT.md)   | Create collections, fields, customize |
+| [ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Technical architecture                |
+| [COMMANDS.md](./docs/COMMANDS.md)         | Complete command reference            |
+| [CI_CD.md](./docs/CI_CD.md)               | GitHub Actions and automation         |
 
 ---
 
