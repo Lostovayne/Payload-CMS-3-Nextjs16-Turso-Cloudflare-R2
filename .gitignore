@@ -52,3 +52,5 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+# Local Pi runtime state
+.atl/

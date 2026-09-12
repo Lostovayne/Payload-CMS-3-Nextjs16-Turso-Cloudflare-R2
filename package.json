@@ -21,7 +21,7 @@
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1103.0",
+    "@aws-sdk/client-s3": "^3.1130.0",
     "@libsql/client": "^0.15.15",
     "@payloadcms/db-sqlite": "3.80.0",
     "@payloadcms/next": "3.80.0",
@@ -39,11 +39,11 @@
     "sharp": "0.34.5"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.6",
+    "@eslint/eslintrc": "^3.3.7",
     "@eslint/js": "^9.39.5",
     "@playwright/test": "1.57.0",
     "@testing-library/react": "16.3.1",
-    "@types/node": "^25.9.5",
+    "@types/node": "^25.9.6",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.2",
@@ -54,7 +54,7 @@
     "playwright-core": "1.57.0",
     "prettier": "^3.9.6",
     "typescript": "5.9.3",
-    "typescript-eslint": "^8.66.0",
+    "typescript-eslint": "^8.70.0",
     "vite-tsconfig-paths": "6.0.3",
     "vitest": "4.0.16"
   },
