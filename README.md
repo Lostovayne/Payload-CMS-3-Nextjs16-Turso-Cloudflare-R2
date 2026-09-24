@@ -1,14 +1,6 @@
-# Payload CMS 3 + Next.js 16 + Turso + Cloudflare R2
-
-[![Payload CMS](https://img.shields.io/badge/Payload%20CMS-3.80.0-00D1B2?style=for-the-badge&logo=payload&logoColor=white)](https://payloadcms.com)
-[![CI](https://github.com/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2/actions/workflows/ci.yml/badge.svg)](https://github.com/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2?style=for-the-badge&logo=semver)](https://github.com/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2/releases)
-[![Forks](https://img.shields.io/github/forks/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2?style=for-the-badge&labelColor=000000&color=007acc)](https://github.com/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2network)
-[![Stars](https://img.shields.io/github/stars/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2?style=for-the-badge&labelColor=000000&color=f5c51d)](https://github.com/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2/stargazers)
-[![Issues](https://img.shields.io/github/issues/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2?style=for-the-badge&labelColor=000000&color=ed6a36)](https://github.com/Lostovayne/Payload-CMS-3-Nextjs16-Turso-Cloudflare-R2/issues)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-
-Production-ready starter template combining Payload CMS 3, Next.js 16 App Router, Turso (SQLite edge database), and Cloudflare R2 for file storage.
+<a href="https://github.com/Gentleman-Programming/gentle-ai">
+  <img width="220" src="https://raw.githubusercontent.com/Gentleman-Programming/gentle-ai/main/docs/assets/brand/built-with-gentle-ai.png" alt="Built with Gentle-AI" />
+</a>
 
 ---
 
