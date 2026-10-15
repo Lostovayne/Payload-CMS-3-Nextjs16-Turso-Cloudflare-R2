@@ -15,8 +15,8 @@ importers:
         specifier: ^0.15.15
         version: 0.15.15
       '@payloadcms/db-sqlite':
-        specifier: 3.89.0
-        version: 3.89.0(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))(supports-color@7.2.0)
+        specifier: 3.90.0
+        version: 3.90.0(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))(supports-color@7.2.0)
       '@payloadcms/next':
         specifier: 3.89.0
         version: 3.89.0(@types/react@19.3.0)(graphql@16.14.2)(monaco-editor@0.56.0)(next@16.3.5(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.57.0)(@types/node@25.9.6)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(sass@1.77.4))(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@7.2.0)(typescript@5.9.3)
@@ -1456,15 +1456,15 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@payloadcms/db-sqlite@3.89.0':
-    resolution: {integrity: sha512-0qY1k3fGxAXoe3r44mm3Iku1BIUeRgjDYq0kIvRdcls+PVOT/7nXsIZgTkjrNn5Cu4mujLIpTVwDGsTcN0fI2w==}
+  '@payloadcms/db-sqlite@3.90.0':
+    resolution: {integrity: sha512-0cO43Y8qkxFHGsUDyYhz7+N0fiIh7nalGZfeA/pyndkGS6g6PlA0MDX8wqT2TiMO+CNCZuSNOC/TUdBYd3WxxA==}
     peerDependencies:
-      payload: 3.89.0
+      payload: 3.90.0
 
-  '@payloadcms/drizzle@3.89.0':
-    resolution: {integrity: sha512-/Ijf87WfIaIGDrlAQBOXcNxRZy+IDfpZQvpmJpA4BwO7PEVMqU6nHSUYVgbFHy6+4XYHvsTp31/4xo06yQwiOw==}
+  '@payloadcms/drizzle@3.90.0':
+    resolution: {integrity: sha512-OSVa5Ig7BHcgN15cuaczdDOBA+5dK6A6U9TZja2O+Lf7O+fUw5+bUWYc5KQHsHsZoXS+VB10uATfpicnht5fLA==}
     peerDependencies:
-      payload: 3.89.0
+      payload: 3.90.0
 
   '@payloadcms/graphql@3.89.0':
     resolution: {integrity: sha512-oa77vdW2yKwla8hXKDQOYvCLZNn6rmR8Th2QgGfq3gAvlR5hEnZ7KH9VK23AfkimXRuHKnI0tH8K+OaBOKdStA==}
@@ -5773,10 +5773,10 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@payloadcms/db-sqlite@3.89.0(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))(supports-color@7.2.0)':
+  '@payloadcms/db-sqlite@3.90.0(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))(supports-color@7.2.0)':
     dependencies:
       '@libsql/client': 0.14.0
-      '@payloadcms/drizzle': 3.89.0(@libsql/client@0.14.0)(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))
+      '@payloadcms/drizzle': 3.90.0(@libsql/client@0.14.0)(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))
       console-table-printer: 2.12.1
       drizzle-kit: 0.31.7(supports-color@7.2.0)
       drizzle-orm: 0.45.2(@libsql/client@0.14.0)
@@ -5817,7 +5817,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@payloadcms/drizzle@3.89.0(@libsql/client@0.14.0)(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))':
+  '@payloadcms/drizzle@3.90.0(@libsql/client@0.14.0)(payload@3.89.0(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))':
     dependencies:
       console-table-printer: 2.12.1
       dequal: 2.0.3
